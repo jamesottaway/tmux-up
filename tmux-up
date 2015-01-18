@@ -7,6 +7,22 @@ then
   exit 1
 fi
 
+if [ $1 == '-h' ] || [ $1 == '--help' ]
+then
+  cat <<-USAGE
+		Usage: $0 FILE
+		Attach to a newly bootstrapped or existing tmux session.
+
+		The FILE argument is used to bootstrap the new tmux session if it doesn't
+		already exist. It must contain tmux-compatible commands, which will be
+		passed to tmux.
+
+		  --help     display this help and exit
+		  --version  output version information and exit
+	USAGE
+  exit 0
+fi
+
 if ! [ -f $1 ]
 then
   echo "$0: cannot stat ‘$1’: No such file"
