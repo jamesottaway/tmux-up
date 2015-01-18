@@ -1,0 +1,30 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]
+then
+  echo "$0: missing file operand"
+  echo "Try '$0 --help' for more information."
+  exit 1
+fi
+
+if ! [ -f $1 ]
+then
+  echo "$0: cannot stat ‘$1’: No such file"
+  exit 1
+fi
+
+CONF=$1
+TMUX=tmux
+
+BASE=$(basename `pwd`)
+NAME=$(basename $CONF .conf)
+SESSION=$BASE/$NAME
+
+if ! $TMUX has-session -t $SESSION > /dev/null 2>&1
+then
+  $TMUX new-session -d -s $SESSION
+  cat $CONF | xargs -L1 $TMUX
+  tmux select-window -t 1
+fi
+
+$TMUX attach -t $SESSION
