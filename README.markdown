@@ -2,6 +2,22 @@
 
 Automate your `tmux` sessions without complex tools, DSLs, or dependencies.
 
+## Install
+
+Fetch the script with either `curl` or `wget`, and make sure it's executable:
+
+```
+curl https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-go
+wget -O - https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-go
+chmod u+x /usr/local/bin/tmux-up
+```
+
+Alternatively, use [fresh](http://freshshell.com/) to do it all for you:
+
+```
+fresh jamesottaway/tmux-up tmux-up --bin
+```
+
 ## Usage
 
 Define the desired initial state of your `tmux` session in a file, using the standard `tmux` commands.
