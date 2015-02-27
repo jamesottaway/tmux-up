@@ -1,6 +1,6 @@
 # tmux-up
 
-Automate your `tmux` sessions without complex tools, DSLs, or dependencies.
+Bootstrap new `tmux` sessions without complex tools, DSLs, or dependencies.
 
 ## Install
 
