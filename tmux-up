@@ -47,7 +47,7 @@ fi
 CONF=$1
 TMUX=tmux
 
-BASE=$(basename `pwd`)
+BASE=$(basename `pwd` | sed 's/[^a-zA-Z0-9]//g')
 NAME=$(basename $CONF .conf)
 
 if [ $NAME == 'tmux' ]
