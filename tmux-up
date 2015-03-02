@@ -3,7 +3,7 @@
 TMUX_UP=tmux-up
 VERSION=0.3.0-pre
 
-if [ $# -ne 1 ]
+if [ $# -ne 1 ] && [ ! -f '.tmux.conf' ]
 then
   echo "$0: missing file operand"
   echo "Try '$0 --help' for more information."
@@ -13,12 +13,12 @@ fi
 if [ "$1" == '-h' ] || [ "$1" == '--help' ]
 then
   cat <<-USAGE
-		Usage: $0 FILE
+		Usage: $0 [FILE]
 		Attach to a newly bootstrapped or existing tmux session.
 
 		The FILE argument is used to bootstrap the new tmux session if it doesn't
 		already exist. It must contain tmux-compatible commands, which will be
-		passed to tmux.
+		passed to tmux. Defaults to: .tmux.conf
 
 		  --help     display this help and exit
 		  --version  output version information and exit
@@ -44,11 +44,11 @@ then
   exit 1
 fi
 
-CONF=$1
+CONF=${1:-.tmux.conf}
 BASE=$(basename `pwd` | sed 's/[^a-zA-Z0-9]//g')
 NAME=$(basename "$CONF" .conf)
 
-if [ "$NAME" == 'tmux' ]
+if [ "$NAME" == 'tmux' ] || [ "$NAME" == '.tmux' ]
 then
   SESSION=$BASE
 else
