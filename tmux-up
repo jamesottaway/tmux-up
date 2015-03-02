@@ -45,8 +45,6 @@ then
 fi
 
 CONF=$1
-TMUX=tmux
-
 BASE=$(basename `pwd` | sed 's/[^a-zA-Z0-9]//g')
 NAME=$(basename "$CONF" .conf)
 
@@ -57,11 +55,11 @@ else
   SESSION=$BASE/$NAME
 fi
 
-if ! $TMUX has-session -t "$SESSION" > /dev/null 2>&1
+if ! tmux has-session -t "$SESSION" > /dev/null 2>&1
 then
-  $TMUX new-session -d -s "$SESSION"
-  cat "$CONF" | xargs -L1 $TMUX
+  tmux new-session -d -s "$SESSION"
+  cat "$CONF" | xargs -L1 tmux
   tmux select-window -t 1
 fi
 
-$TMUX attach -t "$SESSION"
+tmux attach -t "$SESSION"
