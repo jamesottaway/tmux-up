@@ -38,7 +38,7 @@ then
   exit 0
 fi
 
-if ! [ -f $1 ]
+if [ ! -f $1 ]
 then
   echo "$0: cannot stat ‘$1’: No such file"
   exit 1
