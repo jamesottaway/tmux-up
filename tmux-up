@@ -46,7 +46,7 @@ then
   exit 1
 fi
 
-BASE=$(basename "$(pwd)" | sed 's/[^a-zA-Z0-9]//g')
+BASE=$(basename "$(pwd)" | sed 's/[^a-zA-Z0-9\-]//g')
 NAME=$(basename "$CONF" .conf)
 
 if [ "$NAME" = 'tmux' ] || [ "$NAME" = '.tmux' ]
