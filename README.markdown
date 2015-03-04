@@ -18,6 +18,12 @@ Alternatively, use [fresh](http://freshshell.com/) to do it all for you:
 fresh jamesottaway/tmux-up tmux-up --bin
 ```
 
+You can also use [bpkg](http://www.bpkg.io/):
+
+```
+bpkg install jamesottaway/tmux-up
+```
+
 ## Usage
 
 Define the desired initial state of your `tmux` session in a file, using the standard `tmux` commands.
