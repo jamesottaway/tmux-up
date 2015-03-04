@@ -67,6 +67,9 @@ In addition to this, these tools commonly use abstracted formats to define your 
 
 In the case of `tmux-up`, you use native `tmux` commands like `new-window` and `send-keys`.
 
+### MX
+[pengwynn/mx](https://github.com/pengwynn/dotfiles/blob/master/bin/mx)
+
 ### Plain ol' tmux
 
 The other end of the spectrum would be to invoke `tmux` directly, but override the configuration using the `-f` flag.
