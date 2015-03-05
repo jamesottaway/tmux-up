@@ -7,8 +7,8 @@ Bootstrap new `tmux` sessions without complex tools, DSLs, or dependencies.
 Fetch the script with either `curl` or `wget`, and make sure it's executable:
 
 ```
-curl https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-go
-wget -O - https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-go
+curl https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-up
+wget -O - https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-up
 chmod u+x /usr/local/bin/tmux-up
 ```
 
