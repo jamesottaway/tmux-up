@@ -1,0 +1,9 @@
+{
+  "name": "tmux-up",
+  "version": "v0.3.1",
+  "description": "Bootstrap new tmux sessions without complex tools, DSLs, or dependencies",
+  "global": "1",
+  "install": "chmod u+x tmux-up && install tmux-up ${PREFIX:-/usr/local}/bin",
+  "scripts": [ "tmux-up" ]
+}
+
