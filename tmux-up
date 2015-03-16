@@ -63,4 +63,4 @@ then
   tmux select-window -t 1
 fi
 
-tmux attach -t "$SESSION"
+tmux switch-client -t "$SESSION"
