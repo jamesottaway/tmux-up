@@ -4,24 +4,24 @@ Bootstrap new `tmux` sessions without complex tools, DSLs, or dependencies.
 
 ## Install
 
-Fetch the script with either `curl` or `wget`, and make sure it's executable:
-
-```
-curl https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-up
-wget -O - https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-up
-chmod u+x /usr/local/bin/tmux-up
-```
-
-Alternatively, use [fresh](http://freshshell.com/) to do it all for you:
+If you use [fresh](http://freshshell.com/) to manage your dotfiles, just run:
 
 ```
 fresh jamesottaway/tmux-up tmux-up --bin
 ```
 
-You can also use [bpkg](http://www.bpkg.io/):
+If not, you might want to try [bpkg](http://www.bpkg.io/):
 
 ```
 bpkg install jamesottaway/tmux-up
+```
+
+Alternatively just fetch the script with either `curl` or `wget`, and make sure it's executable:
+
+```
+curl https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-up
+wget -O - https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-up
+chmod u+x /usr/local/bin/tmux-up
 ```
 
 ## Usage
