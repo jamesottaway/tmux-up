@@ -58,7 +58,7 @@ fi
 
 if ! tmux has-session -t "$SESSION" > /dev/null 2>&1
 then
-  tmux new-session -d -s "$SESSION"
+  TMUX='' tmux new-session -d -s "$SESSION"
   xargs -L1 tmux < "$CONF"
   tmux select-window -t 1
 fi
