@@ -38,7 +38,11 @@ then
   exit 0
 fi
 
+CONF_DIR=${TMUXUP_CONF_DIR:-$HOME/.tmux}
 CONF=${1:-.tmux.conf}
+
+# try default configuration directory
+[ ! -f "$CONF" ] && CONF="$CONF_DIR/$CONF"
 
 if [ ! -f "$CONF" ]
 then
