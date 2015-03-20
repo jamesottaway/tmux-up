@@ -56,7 +56,7 @@ NAME=$(basename "$CONF" .conf)
 if [ "$NAME" = 'tmux' ] || [ "$NAME" = '.tmux' ]
 then
   SESSION=$BASE
-elif [ ! -f "${CONF}.conf" ]
+elif [ ! -f "${NAME}.conf" ]
 then
   SESSION=$NAME
 else
