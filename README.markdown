@@ -59,6 +59,18 @@ Under the hood `tmux-up` will:
 
 If you detach from the `example/dev` session, simply re-run `tmux-up dev.conf` which will reattach you to the session.
 
+## Default Configurations
+
+You can place default configurations in `~/.tmux/`, for example `~/.tmux/default.conf`. To attach a default configuration just run
+
+```
+ ❯ tmux-up default.conf
+```
+
+in any directory. This will create a `tmux` session named `default` and invoke each line in `~/.tmux/default.conf`.
+
+If you have a `default.conf` in your current directory, it will take precedence over the configuration in `~/.tmux/`.
+
 ## Alternatives
 
 There are quite a lot of other approaches to this problem already floating around.

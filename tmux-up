@@ -38,7 +38,11 @@ then
   exit 0
 fi
 
+CONF_DIR=$HOME/.tmux
 CONF=${1:-.tmux.conf}
+
+# try default configuration directory
+[ ! -f "$CONF" ] && CONF="$CONF_DIR/$CONF"
 
 if [ ! -f "$CONF" ]
 then
@@ -52,6 +56,9 @@ NAME=$(basename "$CONF" .conf)
 if [ "$NAME" = 'tmux' ] || [ "$NAME" = '.tmux' ]
 then
   SESSION=$BASE
+elif [ ! -f "${NAME}.conf" ]
+then
+  SESSION=$NAME
 else
   SESSION=$BASE/$NAME
 fi
