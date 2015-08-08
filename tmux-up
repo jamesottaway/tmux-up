@@ -38,16 +38,16 @@ then
   exit 0
 fi
 
-CONF=${1:-.tmux.conf}
+FILE=${1:-.tmux.conf}
 
-if [ ! -f "$CONF" ]
+if [ ! -f "$FILE" ]
 then
-  echo "$0: cannot stat ‘${CONF}’: No such file"
+  echo "$0: cannot stat ‘${FILE}’: No such file"
   exit 1
 fi
 
 BASE=$(basename "$PWD" | sed 's/[^a-zA-Z0-9\-]//g')
-NAME=$(basename "$CONF" .conf)
+NAME=$(basename "$FILE" .conf)
 
 if [ "$NAME" = 'tmux' ] || [ "$NAME" = '.tmux' ]
 then
@@ -59,7 +59,7 @@ fi
 if ! tmux has-session -t "$SESSION" > /dev/null 2>&1
 then
   TMUX='' tmux new-session -d -s "$SESSION"
-  xargs -L1 tmux < "$CONF"
+  xargs -L1 tmux < "$FILE"
   tmux select-window -t 1
 fi
 
