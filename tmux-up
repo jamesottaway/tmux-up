@@ -39,6 +39,8 @@ then
 fi
 
 TMUX_DIR='.tmux'
+GLOBAL_DIR="$HOME/$TMUX_DIR"
+BASE=$(basename "$PWD" | sed 's/[^a-zA-Z0-9\-]//g')
 
 if [ -f "$1" ]
 then
@@ -46,6 +48,10 @@ then
 elif [ -f "$TMUX_DIR/$1" ]
 then
   FILE=$TMUX_DIR/$1
+elif [ -f "$GLOBAL_DIR/$1" ]
+then
+  FILE="$GLOBAL_DIR/$1"
+  unset BASE
 elif [ -f 'tmux.conf' ]
 then
   FILE='tmux.conf'
@@ -57,10 +63,12 @@ else
   exit 1
 fi
 
-BASE=$(basename "$PWD" | sed 's/[^a-zA-Z0-9\-]//g')
 NAME=$(basename "$FILE" .conf)
 
-if [ "$NAME" = 'tmux' ] || [ "$NAME" = '.tmux' ]
+if [ -z "$BASE" ]
+then
+  SESSION=$NAME
+elif [ "$NAME" = 'tmux' ] || [ "$NAME" = '.tmux' ]
 then
   SESSION=$BASE
 else
