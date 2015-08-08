@@ -38,11 +38,14 @@ then
   exit 0
 fi
 
-FILE=${1:-.tmux.conf}
-
-if [ ! -f "$FILE" ]
+if [ -f "$1" ]
 then
-  echo "$0: cannot stat ‘${FILE}’: No such file"
+  FILE=$1
+elif [ -f '.tmux.conf' ]
+then
+  FILE='.tmux.conf'
+else
+  echo "$0: cannot stat ‘${1:-.tmux.conf}’: No such file"
   exit 1
 fi
 
