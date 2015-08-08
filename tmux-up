@@ -38,9 +38,14 @@ then
   exit 0
 fi
 
+TMUX_DIR='.tmux'
+
 if [ -f "$1" ]
 then
   FILE=$1
+elif [ -f "$TMUX_DIR/$1" ]
+then
+  FILE=$TMUX_DIR/$1
 elif [ -f 'tmux.conf' ]
 then
   FILE='tmux.conf'
