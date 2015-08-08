@@ -60,6 +60,7 @@ if ! tmux has-session -t "$SESSION" > /dev/null 2>&1
 then
   TMUX='' tmux new-session -d -s "$SESSION"
   xargs -L1 tmux < "$FILE"
+  tmux select-window -t 2 > /dev/null 2>&1
   tmux select-window -t 1
 fi
 
