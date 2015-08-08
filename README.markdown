@@ -19,8 +19,8 @@ bpkg install jamesottaway/tmux-up
 Alternatively just fetch the script with either `curl` or `wget`, and make sure it's executable:
 
 ```
-curl https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-up
-wget -O - https://raw.githubusercontent.com/jamesottaway/tmux-up/master/tmux-up > /usr/local/bin/tmux-up
+curl http://git.io/tmux-up > /usr/local/bin/tmux-up
+wget -O - http://git.io/tmux-up > /usr/local/bin/tmux-up
 chmod u+x /usr/local/bin/tmux-up
 ```
 
