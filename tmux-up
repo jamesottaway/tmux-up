@@ -42,23 +42,24 @@ TMUX_DIR='.tmux'
 GLOBAL_DIR="$HOME/$TMUX_DIR"
 BASE=$(basename "$PWD" | sed 's/[^a-zA-Z0-9\-]//g')
 
-if [ -f "$1" ]
+if [ -z "$1" ]
 then
-  FILE=$1
-elif [ -f "$TMUX_DIR/$1" ]
-then
-  FILE=$TMUX_DIR/$1
-elif [ -f "$GLOBAL_DIR/$1" ]
-then
-  FILE="$GLOBAL_DIR/$1"
-  unset BASE
-elif [ -f 'tmux.conf' ]
-then
-  FILE='tmux.conf'
-elif [ -f '.tmux.conf' ]
-then
-  FILE='.tmux.conf'
+  FILES="$PWD/tmux.conf $PWD/.tmux.conf $HOME/.tmux-up/$BASE.conf $HOME/.tmux-up.conf"
 else
+  FILES="$1 $PWD/$1 $PWD/.tmux/$1 $HOME/.tmux-up/$BASE/$1 $HOME/.tmux-up/$1"
+fi
+
+for file in $FILES
+do
+  if [ -f $file ]
+  then
+    FILE=$file
+    break
+  fi
+done
+
+if [ -z $FILE ]
+then
   echo "$0: cannot stat ‘${1:-tmux.conf}’: No such file"
   exit 1
 fi

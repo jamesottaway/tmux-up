@@ -59,6 +59,26 @@ Under the hood `tmux-up` will:
 
 If you detach from the `example/dev` session, simply re-run `tmux-up dev.conf` which will reattach you to the session.
 
+## Config Search Paths
+
+If you run `tmux-up` without any arguments from `/tmp/foo/`, the following is the list of files `tmux-up` will attempt to load (in order):
+
+```
+/tmp/foo/tmux.conf
+/tmp/foo/.tmux.conf
+$HOME/.tmux-up/foo.conf
+$HOME/.tmux-up.conf
+```
+
+If you instead run `tmux-up main.conf` from the same directory, the following is the list of files `tmux-up` will attempt to load (in order):
+
+```
+/tmp/foo/main.conf
+/tmp/foo/.tmux/main.conf
+$HOME/.tmux-up/foo/main.conf
+$HOME/.tmux-up/main.conf
+```
+
 ## Alternatives
 
 There are quite a lot of other approaches to this problem already floating around.
