@@ -78,7 +78,7 @@ fi
 
 if ! tmux has-session -t "$SESSION" > /dev/null 2>&1
 then
-  TMUX='' tmux new-session -d -s "$SESSION"
+  tmux new-session -d -s "$SESSION"
   tmux source-file "$FILE"
   for i in 2 1 0; do
     tmux select-window -t $i > /dev/null 2>&1
