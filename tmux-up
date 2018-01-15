@@ -10,6 +10,12 @@ then
   exit 1
 fi
 
+if [ -n "$TMUX" ]
+then
+  echo "$0: cannot run within an existing tmux session"
+  exit 1
+fi
+
 if [ "$1" = '-h' ] || [ "$1" = '--help' ]
 then
   cat <<-USAGE
@@ -76,18 +82,14 @@ else
   SESSION=$BASE/$NAME
 fi
 
-if ! tmux has-session -t "$SESSION" > /dev/null 2>&1
+if tmux has-session -t "$SESSION" > /dev/null 2>&1
 then
+  tmux attach -t "$SESSION"
+else
   tmux new-session -d -s "$SESSION"
   tmux source-file "$FILE"
   for i in 2 1 0; do
     tmux select-window -t $i > /dev/null 2>&1
   done
-fi
-
-if [ -z "$TMUX" ]
-then
-  tmux attach -t "$SESSION"
-else
-  tmux switch-client -t "$SESSION"
+  tmux attach-session -t "$SESSION"
 fi
